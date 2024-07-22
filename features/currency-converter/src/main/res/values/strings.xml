@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="conversion_result">Conversion result</string>
+    <string name="you_converted">You converted</string>
+    <string name="new_conversion">New conversion</string>
+    <string name="refresh">Refresh</string>
+    <string name="error_happen">An error has occurred</string>
 </resources>

@@ -1,11 +1,9 @@
-package dev.nonoxy.currencyconverter.api.local
+package dev.nonoxy.currencyconverter.data.local
 
-import dev.nonoxy.currencyconverter.api.local.models.CurrencyInfoDTO
+import dev.nonoxy.currencyconverter.data.RequestResult
+import dev.nonoxy.currencyconverter.data.local.models.CurrencyInfo
+import kotlinx.coroutines.flow.Flow
 
 interface CurrencyResourcesApi {
-    suspend fun getCurrencyList(): Result<List<CurrencyInfoDTO>>
-}
-
-fun CurrencyResourcesApi(currencyJsonString: String): CurrencyResourcesApi {
-    return CurrencyResourcesApi(currencyJsonString)
+    fun getCurrencyList(): Flow<RequestResult<List<CurrencyInfo>>>
 }

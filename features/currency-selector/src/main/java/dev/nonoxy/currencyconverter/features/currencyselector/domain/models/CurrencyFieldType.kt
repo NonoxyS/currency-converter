@@ -1,4 +1,5 @@
 package dev.nonoxy.currencyconverter.features.currencyselector.domain.models
 
-class CurrencyFieldType {
+enum class CurrencyFieldType {
+    CurrencyBase, CurrencyTarget
 }

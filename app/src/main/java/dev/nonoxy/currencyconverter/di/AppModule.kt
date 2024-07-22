@@ -1,14 +1,18 @@
-package dev.nonoxy.restaurant_reviews.di
+package dev.nonoxy.currencyconverter.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.nonoxy.restaurant_reviews.BuildConfig
-import dev.nonoxy.restaurant_reviews.api.RestaurantReviewsApi
-import dev.nonoxy.restaurant_reviews.common.eventbus.EventBusController
+import dev.nonoxy.currencyconverter.BuildConfig
+import dev.nonoxy.currencyconverter.R
+import dev.nonoxy.currencyconverter.api.CurrencyConverterApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.io.IOException
+import java.io.InputStream
 import javax.inject.Singleton
 
 @Module
@@ -31,17 +35,24 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRestaurantReviewsApi(okHttpClient: OkHttpClient?): RestaurantReviewsApi {
-        return RestaurantReviewsApi(
-            baseUrl = BuildConfig.RESTAURANT_REVIEWS_API_BASE_URL,
-            apiKey = BuildConfig.RESTAURANT_REVIEWS_API_KEY,
+    fun provideCurrencyConverterApi(okHttpClient: OkHttpClient?): CurrencyConverterApi {
+        return CurrencyConverterApi(
+            baseUrl = BuildConfig.CURRENCY_CONVERTER_API_BASE_URL,
+            apiKey = BuildConfig.CURRENCY_CONVERTER_API_KEY,
             okHttpClient = okHttpClient
         )
     }
 
     @Provides
     @Singleton
-    fun provideEventBusController(): EventBusController {
-        return EventBusController()
+    fun provideCurrencyResourceByteArray(@ApplicationContext context: Context): ByteArray? {
+        try {
+            val inputStream = context.assets.open("currency_list.json")
+            val byteArray = inputStream.readBytes().also { inputStream.close() }
+            return byteArray
+        } catch (ioException: IOException) {
+            return null
+        }
     }
+
 }

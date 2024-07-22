@@ -1,4 +1,7 @@
 package dev.nonoxy.currencyconverter.features.currencyselector.domain.models
 
-class ConversionCurrencyInfo {
-}
+class ConversionCurrencyInfo(
+    val baseCurrencyCode: String,
+    val targetCurrencyCode: String,
+    val amount: String
+)

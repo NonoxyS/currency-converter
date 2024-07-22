@@ -2,11 +2,17 @@ package dev.nonoxy.currencyconverter.features.currencyselector.presentation.ui.v
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.KeyboardArrowDown
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -14,11 +20,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.imageLoader
+import dev.nonoxy.currencyconverter.features.currencyselector.R
 import dev.nonoxy.currencyconverter.features.currencyselector.domain.models.CurrencyInfoUI
 import dev.nonoxy.currencyconverter.features.theme.ui.theme.CurrencyConverterTheme
 
 @Composable
-internal fun CurrencySelectorBaseCurrencyView(
+internal fun CurrencySelectorCurrencyView(
     modifier: Modifier = Modifier,
     selectedCurrency: CurrencyInfoUI,
 ) {
@@ -47,9 +54,23 @@ internal fun CurrencySelectorBaseCurrencyView(
                 contentDescription = null,
                 imageLoader = LocalContext.current.imageLoader,
                 contentScale = ContentScale.Crop,
+                error = painterResource(R.drawable.ic_no_image),
                 modifier = Modifier
                     .size(width = 25.dp, 21.dp)
-                    .border(width = Dp.Hairline, color = CurrencyConverterTheme.colors.secondaryText)
+                    .clip(RoundedCornerShape(4.dp))
+                    .border(
+                        width = Dp.Hairline,
+                        color = CurrencyConverterTheme.colors.secondaryText,
+                        shape = RoundedCornerShape(4.dp)
+                    )
+            )
+        },
+        trailingIcon = {
+            Icon(
+                imageVector = Icons.Rounded.KeyboardArrowDown,
+                contentDescription = null,
+                tint = CurrencyConverterTheme.colors.secondaryText,
+                modifier = Modifier.size(24.dp)
             )
         },
         readOnly = true,

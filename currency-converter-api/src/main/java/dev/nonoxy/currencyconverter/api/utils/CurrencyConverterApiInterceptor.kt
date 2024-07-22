@@ -1,4 +1,4 @@
-package dev.nonoxy.currencyconverter.api.network.utils
+package dev.nonoxy.currencyconverter.api.utils
 
 import okhttp3.Interceptor
 import okhttp3.Response

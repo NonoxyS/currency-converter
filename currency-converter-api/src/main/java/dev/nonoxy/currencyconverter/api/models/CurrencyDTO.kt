@@ -1,4 +1,4 @@
-package dev.nonoxy.currencyconverter.api.network.models
+package dev.nonoxy.currencyconverter.api.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

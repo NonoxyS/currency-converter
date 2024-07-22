@@ -1,9 +1,9 @@
-package dev.nonoxy.currencyconverter.api.network
+package dev.nonoxy.currencyconverter.api
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
-import dev.nonoxy.currencyconverter.api.network.models.CurrencyDTO
-import dev.nonoxy.currencyconverter.api.network.utils.CurrencyConverterApiInterceptor
+import dev.nonoxy.currencyconverter.api.models.CurrencyDTO
+import dev.nonoxy.currencyconverter.api.utils.CurrencyConverterApiInterceptor
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -17,7 +17,7 @@ interface CurrencyConverterApi {
     suspend fun getConvertedCurrency(
         @Query("base") baseCurrencyCode: String,
         @Query("target") targetCurrencyCode: String,
-        @Query("base_amount") baseAmount: Float
+        @Query("base_amount") baseAmount: String
     ): Result<CurrencyDTO>
 
 }

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -22,6 +24,22 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField(
+            "String",
+            "CURRENCY_CONVERTER_API_BASE_URL",
+            "\"https://exchange-rates.abstractapi.com/v1/\""
+        )
+
+        val localProperties = Properties().apply {
+            load(project.rootProject.file("local.properties").inputStream())
+        }
+
+        buildConfigField(
+            "String",
+            "CURRENCY_CONVERTER_API_KEY",
+            "\"${localProperties.getProperty("API_KEY")}\""
+        )
     }
 
     buildTypes {
@@ -42,15 +60,17 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        buildConfig = true
     }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+composeCompiler {
+    enableStrongSkippingMode
 }
 
 dependencies {

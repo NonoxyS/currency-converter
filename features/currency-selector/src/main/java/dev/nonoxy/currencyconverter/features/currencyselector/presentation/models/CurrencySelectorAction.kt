@@ -1,4 +1,7 @@
 package dev.nonoxy.currencyconverter.features.currencyselector.presentation.models
 
-class CurrencySelectorAction {
+sealed class CurrencySelectorAction {
+    data object ShowSearchCurrencyBottomModalSheet : CurrencySelectorAction()
+    data object ShowCurrencyAmountInputError : CurrencySelectorAction()
+    data object NavigateToConversionResult : CurrencySelectorAction()
 }

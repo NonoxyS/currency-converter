@@ -1,6 +1,6 @@
 package dev.nonoxy.currencyconverter.features.currencyconverter.domain.models
 
-class CurrencyConverterUI(
+data class CurrencyConversionUI(
     val baseCode: String,
     val targetCode: String,
     val baseAmount: String,

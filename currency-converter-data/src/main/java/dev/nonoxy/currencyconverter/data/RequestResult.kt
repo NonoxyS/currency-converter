@@ -1,4 +1,4 @@
-package dev.nonoxy.restaurant_reviews.data
+package dev.nonoxy.currencyconverter.data
 
 sealed class RequestResult<E: Any>(open val data: E? = null) {
 
