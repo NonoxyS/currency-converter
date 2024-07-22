@@ -36,6 +36,7 @@ internal fun CurrencySelectorErrorView(
             Text(
                 text = stringResource(R.string.error_happen),
                 style = CurrencyConverterTheme.typography.bodyMedium,
+                color = CurrencyConverterTheme.colors.primaryText,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 textAlign = TextAlign.Center
